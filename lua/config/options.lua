@@ -71,3 +71,9 @@ vim.o.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
+
+-- Indentation settings
+vim.o.expandtab = true       -- Insert spaces instead of tabs
+vim.o.tabstop = 2            -- Display width of tab characters
+vim.o.shiftwidth = 2         -- Spaces for indentation (>> and <<)
+vim.o.softtabstop = 2        -- Spaces inserted when pressing <Tab>
