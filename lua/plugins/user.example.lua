@@ -33,4 +33,23 @@ return {
   --     { '<leader>gs', '<cmd>Git<cr>', desc = 'Git status' },
   --   },
   -- },
+
+  -- OMAKUB INTEGRATION EXAMPLES:
+
+  -- Example: Override Omakub colorscheme detection
+  -- Add to lua/config/settings.lua instead:
+  -- M.omakub = { colorscheme = 'catppuccin' }
+
+  -- Example: Override Omakub font detection
+  -- Add to lua/config/settings.lua instead:
+  -- M.omakub = { font = 'JetBrainsMono Nerd Font' }
+
+  -- Example: Customize an Omakub theme plugin
+  -- {
+  --   'folke/tokyonight.nvim',
+  --   opts = {
+  --     style = 'storm',
+  --     transparent = true,
+  --   },
+  -- },
 }

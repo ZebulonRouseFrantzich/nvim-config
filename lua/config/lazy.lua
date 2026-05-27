@@ -16,7 +16,6 @@ rtp:prepend(lazypath)
 -- [[ Configure and install plugins ]]
 -- Build the spec table dynamically
 local spec = {
-  -- Import all plugin modules from lua/plugins/
   { import = 'plugins.editor' },
   { import = 'plugins.coding' },
   { import = 'plugins.lsp' },
@@ -24,6 +23,7 @@ local spec = {
   { import = 'plugins.treesitter' },
   { import = 'plugins.git' },
   { import = 'plugins.ui' },
+  { import = 'plugins.ui.omakub-themes' },
   { import = 'plugins.utils' },
 }
 

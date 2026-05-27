@@ -71,8 +71,11 @@ M.plugins = {
   },
 }
 
--- Helper function to check if a plugin is enabled
--- Returns false if the plugin is not found in the settings table
+M.omakub = {
+  -- colorscheme = 'catppuccin',
+  -- font = 'JetBrainsMono Nerd Font',
+}
+
 function M.is_enabled(category, plugin_name)
   if M.plugins[category] and M.plugins[category][plugin_name] ~= nil then
     return M.plugins[category][plugin_name]

@@ -4,15 +4,31 @@ local settings = require 'config.settings'
 return {
   'nvim-treesitter/nvim-treesitter',
   enabled = settings.is_enabled('treesitter', 'treesitter'),
+  lazy = false,
   build = ':TSUpdate',
-  main = 'nvim-treesitter.configs',
-  opts = {
-    ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
-    auto_install = true,
-    highlight = {
-      enable = true,
-      additional_vim_regex_highlighting = { 'ruby' },
-    },
-    indent = { enable = true, disable = { 'ruby' } },
-  },
+  config = function()
+    local ts = require('nvim-treesitter')
+
+    ts.install({
+      'bash', 'c', 'diff', 'html', 'lua', 'luadoc',
+      'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc'
+    }):wait(30000)
+
+    vim.api.nvim_create_autocmd('FileType', {
+      group = vim.api.nvim_create_augroup('treesitter-setup', { clear = true }),
+      callback = function(args)
+        local ft = vim.bo[args.buf].filetype
+
+        pcall(vim.treesitter.start, args.buf)
+
+        if ft == 'ruby' then
+          vim.bo[args.buf].syntax = 'on'
+        end
+
+        if ft ~= 'ruby' then
+          vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end
+      end,
+    })
+  end,
 }

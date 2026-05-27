@@ -77,3 +77,9 @@ vim.o.expandtab = true       -- Insert spaces instead of tabs
 vim.o.tabstop = 2            -- Display width of tab characters
 vim.o.shiftwidth = 2         -- Spaces for indentation (>> and <<)
 vim.o.softtabstop = 2        -- Spaces inserted when pressing <Tab>
+local omakub = require 'config.omakub'
+local font = omakub.get_font()
+
+if font then
+  vim.o.guifont = font .. ':h12'
+end
